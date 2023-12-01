@@ -9,6 +9,6 @@ Advent of Code 2023, Day 1, challenge 1
 2. `cd aoc23-d1-c1`
 3. `mkdir build`
 4. `make`
-5. Binary should now be present in the `build` directory
+5. Binary should now be present in the `build` directory, pipe input into it to be processed
 6. ???
 7. Profit.
