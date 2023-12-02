@@ -2,17 +2,19 @@
 #include <string>	// std::string
 #include <ctype.h>	// isdigit()
 #include <vector>	// std::vector
+#include <ranges>	// std::views, std::ranges
+#include <algorithm>	// std::ranges::copy
 
 int main() {
 	std::string line{};
 	int answer{};
+	auto digitsOnly = [](const char c) { return isdigit(c); };
+	auto digit2numeric = [](const char c) { return c - '0'; };
+	const int place = 10;		// 10s place, eg the second place in a base 10 system
 	while(std::cin>>line) {
 		std::vector<int> digits{};
-		for(char c : line) {
-			if(isdigit(c))					// https://stackoverflow.com/questions/2340688/how-to-find-out-if-a-character-in-a-string-is-an-integer
-				digits.push_back(c-'0');		// https://stackoverflow.com/questions/5029840/convert-char-to-int-in-c-and-c
-		}
-		answer += (digits.front()*10)+digits.back();
+		std::ranges::copy(line | std::views::filter(digitsOnly) | std::views::transform(digit2numeric),std::back_inserter(digits));
+		answer += (digits.front() * place) + digits.back();
 	}
 	std::cout<<"Answer: "<<answer<<"\n";
 }
