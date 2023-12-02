@@ -13,9 +13,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: make
-      run: mkdir build && make
-    - name: unit-test
+    - name: make_unit-test
       run: |
+        mkdir build && make
         if [ $(echo ${{ secrets.EXAMPLE_CHALLENGE }} | build/aoc23-d1-c1) = ${{ secrets.EXAMPLE_ANSWER }} ]; then exit 0; else exit 1; fi
         if [ $(echo ${{ secrets.CHALLENGE }} | build/aoc23-d1-c1) = ${{ secrets.ANSWER }} ]; then exit 0; else exit 1; fi
