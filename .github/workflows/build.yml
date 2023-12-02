@@ -17,5 +17,5 @@ jobs:
       run: mkdir build && make
     - name: unit-test
       run: |
-        if [ $(echo ${{ secrets.EXAMPLE_CHALLENGE }} | build/aoc23-d1-c1) -eq ${{ secrets.EXAMPLE_ANSWER }} ]; then exit 0; else exit 1; fi
-        if [ $(echo ${{ secrets.CHALLENGE }} | build/aoc23-d1-c1) -eq ${{ secrets.ANSWER }} ]; then exit 0; else exit 1; fi
+        if [ $(echo ${{ secrets.EXAMPLE_CHALLENGE }} | build/aoc23-d1-c1) = ${{ secrets.EXAMPLE_ANSWER }} ]; then exit 0; else exit 1; fi
+        if [ $(echo ${{ secrets.CHALLENGE }} | build/aoc23-d1-c1) = ${{ secrets.ANSWER }} ]; then exit 0; else exit 1; fi
